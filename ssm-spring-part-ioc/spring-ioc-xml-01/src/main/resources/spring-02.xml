@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--
+基于构造函数的Di依赖注入
+构造器用constructor-arg   - 构造参数
+-->
+  <bean id="userDao" class="edu.zjgs.ioc_02_Di.UserDao"/>
+<!--    单个构造参数注入-->
+  <bean id="userService" class="edu.zjgs.ioc_02_Di.UserService">
+    <!--引用构造参数 ref引用其他bean的标识-->
+    <constructor-arg  ref="userDao"/>
+  </bean>
+<!--    多个构造参数注入:三种    -->
+  <bean id="userService2" class="edu.zjgs.ioc_02_Di.UserService">
+    <!-- value直接注入基本类型值 -->
+<!--    相应构造函数的顺序注入数据-->
+    <constructor-arg value="10"/>
+    <constructor-arg value="张三"/>
+    <constructor-arg ref="userDao"/>
+  </bean>
+<!--    按照相应构造函数的名称注入数据-->
+  <bean id="userService3" class="edu.zjgs.ioc_02_Di.UserService">
+    <!-- value直接注入基本类型值 -->
+    <constructor-arg name="userDao" ref="userDao"/>
+    <constructor-arg name="age" value="10"/>
+    <constructor-arg name="name" value="张三"/>
+  </bean>
+<!--    按照相应构造函数的角标注入数据-->
+  <bean id="userService4" class="edu.zjgs.ioc_02_Di.UserService">
+    <!-- value直接注入基本类型值 -->
+    <constructor-arg index="2" ref="userDao"/>
+    <constructor-arg index="0" value="10"/>
+    <constructor-arg index="1" value="张三"/>
+  </bean>
+
+
+
+<!--
+基于setter方法的依赖注入
+set用property -属性
+-->
+  <bean id="movieFinder" class="edu.zjgs.ioc_02_Di.MovieFinder"/>
+  <bean id="simpleMovieLister" class="edu.zjgs.ioc_02_Di.SimpleMovieLister">
+    <property name="MovieFinder"  ref="movieFinder"/>
+    <property name="movieName" value="小时候"/>
+  </bean>
+
+</beans>
+
+
+
+
+

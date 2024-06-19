@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--
+使用factoryBean可以替代实例化工厂，简化了要配置两个bean的步骤
+
+-->
+  <bean id="javaBean" class="edu.zjgs.ioc_06_FactoryBean.JavaBeanFactoryBean">
+<!--    此位置时给JavaBeanFactoryBean配置的不是对JavaBean
+        因此不能用<property name="name" value="二狗子"></property>进行赋值
+-->
+    <property name="value" value="二狗子"></property>
+  </bean>
+</beans>

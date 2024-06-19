@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--  无参构造实例化-->
+  <bean id="HappyComponent" class="edu.zjgs.ioc_01_Inversion_of_Control.HappyComponent"/>
+
+<!--  静态工厂-->
+  <bean id="ClientService" class="edu.zjgs.ioc_01_Inversion_of_Control.ClientService" factory-method="createInstance"/>
+
+<!--  非静态工厂-->
+  <bean id="DefaultServiceLocator" class="edu.zjgs.ioc_01_Inversion_of_Control.DefaultServiceLocator"  />
+  <bean id="clientService" factory-bean="DefaultServiceLocator" factory-method="createClientServiceInstance"/>
+
+</beans>

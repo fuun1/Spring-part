@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--  默认为singleton-->
+<!--  每个bean都会转化成Spring内部的BeanDefinition对象 BeanDefinition对象中包含了定义的id class信息-->
+<!--  WebApplicationContext中还会有另外两个作用域request和session-->
+
+
+<!--  指定了 IOC 容器只会创建一个对象实例，并在整个应用程序中共享该实例-->
+  <bean id="javaBean_singleton" class="edu.zjgs.ioc_05_scope.JavaBean_singleton" scope="singleton"/>
+<!--  指定了 IOC 容器在每次请求时都会创建一个新的对象实例，并且不对这些实例进行缓存或重用。每次请求该 Bean 时都会返回一个新的实例-->
+  <bean id="javaBean_prototype" class="edu.zjgs.ioc_05_scope.JavaBean_Prototype" scope="prototype"/>
+
+</beans>
